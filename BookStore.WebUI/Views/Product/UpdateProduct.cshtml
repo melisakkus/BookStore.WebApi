@@ -1,0 +1,25 @@
+﻿@using BookStore.WebUI.Dtos.ProductDtos
+@model GetByIdProductDto
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <br /> <br />
+        <input type="hidden" asp-for="ProductId" class="form-control" />
+        <br />
+        <label>Ürün Adı</label>
+        <input type="text" asp-for="ProductName" class="form-control" />
+        <br />
+        <label>Stok Miktarı</label>
+        <input type="int" asp-for="ProductStock" class="form-control" />
+        <br />
+        <label>Fiyat</label>
+        <input type="int" asp-for="ProductPrice" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Kategori Ekle</button>
+    </div>
+</form>

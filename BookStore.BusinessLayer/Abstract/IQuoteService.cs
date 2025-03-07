@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.BusinessLayer.Abstract
 {
-    public interface IProductService : IGenericService<Product>
+    public interface IQuoteService : IGenericService<Quote>
     {
-        int TGetProductCount();
-		List<Product> TGetLastFourBooks();
-		Product TGetBestSellingBook();
-
-
-	}
+        Quote TTakeLastQuote();
+    }
 }

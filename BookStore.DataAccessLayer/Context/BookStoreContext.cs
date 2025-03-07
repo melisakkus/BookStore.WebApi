@@ -13,9 +13,11 @@ namespace BookStore.DataAccessLayer.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-B6FJQDJ\\SQLEXPRESS;initial catalog=BookStoreDb;integrated security = true;TrustServerCertificate=True;");
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
     }
 }

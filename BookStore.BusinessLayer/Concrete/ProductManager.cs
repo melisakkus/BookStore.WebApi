@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.BusinessLayer.Concrete
 {
-    public class ProductManager : IProductService
+	public class ProductManager : IProductService
     {
         private readonly IProductDal _productDal;
 
@@ -33,12 +33,22 @@ namespace BookStore.BusinessLayer.Concrete
             return _productDal.GetAll();
         }
 
-        public Product TGetById(int id)
+		public Product TGetBestSellingBook()
+		{
+			return _productDal.GetBestSellingBook();
+		}
+
+		public Product TGetById(int id)
         {
             return _productDal.GetById(id);
         }
 
-        public int TGetProductCount()
+		public List<Product> TGetLastFourBooks()
+		{
+            return _productDal.GetLastFourBooks();
+		}
+
+		public int TGetProductCount()
         {
             return _productDal.GetProductCount();
         }

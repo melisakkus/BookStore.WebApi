@@ -1,0 +1,21 @@
+﻿@model UpdateQuoteDto
+
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <br /> <br />
+        <input type="hidden" asp-for="QuoteId" />
+        <label>Alıntı</label>
+        <input type="text" asp-for="Sentence" class="form-control" />
+        <br />
+        <label>Yazar</label>
+        <input type="int" asp-for="Author" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Alıntı Güncelle</button>
+    </div>
+</form>

@@ -14,7 +14,7 @@ namespace BookStore.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> CategoryList()
+		public async Task<IActionResult> CategoryList()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7158/api/Categories"); //kategori listesini getirmek istiyorum

@@ -53,5 +53,17 @@ namespace BookStore.WebApi.Controllers
         {
             return Ok(_productService.TGetProductCount());
         }
-    }
+
+        [HttpGet("LastFourBooks")]
+		public IActionResult LastFourBooks()
+		{
+			return Ok(_productService.TGetLastFourBooks());
+		}
+
+        [HttpGet("BestSellingBook")]
+		public IActionResult BestSellingBook()
+        {
+            return Ok(_productService.TGetBestSellingBook());
+		}
+	}
 }

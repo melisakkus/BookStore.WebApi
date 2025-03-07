@@ -1,0 +1,52 @@
+﻿@model List<ResultProductDto>
+
+@*
+_DefaultSliderComponent
+*@
+
+<section id="billboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="prev slick-arrow">
+                    <i class="icon icon-arrow-left"></i>
+                </button>
+
+                <div class="main-slider pattern-overlay">
+                    @foreach (var item in Model)
+                    {
+                        string description = item.Description;
+                        int maxLength = 400;
+
+                        if (description.Length > maxLength)
+                        {
+                            int lastSpaceIndex = description.LastIndexOf(" ", maxLength);
+                            if (lastSpaceIndex > 0)
+                            {
+                                description = description.Substring(0, lastSpaceIndex) + "...";
+                            }
+                            else
+                            {
+                                description = description.Substring(0, maxLength) + "...";
+                            }
+                        }
+
+                        <div class="slider-item d-flex align-items-center">
+                            <!-- Flexbox eklendi -->
+                            <div class="banner-content">
+                                <h2 class="banner-title">@item.ProductName</h2>
+                                <p>@description</p> <!-- Sadece kesilmiş metin yazdırılıyor -->
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">
+                                        Devamını Oku...<i class="icon icon-ns-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div><!-- banner-content -->
+                            <img src="@item.ImageUrl" alt="banner" class="banner-image" style="width:350px;height:500px">
+                        </div> <!-- slider-item -->
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

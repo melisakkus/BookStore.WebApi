@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Abstract
 {
-    public interface IProductDal : IGenericDal<Product>
+    public interface IQuoteDal : IGenericDal<Quote>
     {
-        int GetProductCount();
-		List<Product> GetLastFourBooks();
-        Product GetBestSellingBook();
+        Quote TakeLastQuote();
     }
 }

@@ -42,7 +42,6 @@ namespace BookStore.WebUI.Controllers
             }
             return View();
         }
-
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();

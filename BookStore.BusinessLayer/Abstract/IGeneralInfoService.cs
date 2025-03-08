@@ -10,6 +10,5 @@ namespace BookStore.BusinessLayer.Abstract
     public interface IGeneralInfoService : IGenericService<GeneralInfo>
     {
         GeneralInfo TGetLastOne();
-
     }
 }

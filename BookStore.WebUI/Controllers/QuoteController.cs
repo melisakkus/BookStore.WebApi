@@ -24,18 +24,6 @@ namespace BookStore.WebUI.Controllers
             }
             return View();
         }
-		public async Task<IActionResult> TakeLastQuote()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7158/api/Quotes/GetLastQuote");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByIdQuoteDto>(jsonData);
-                return View(values);
-            }
-            return View();
-        }
 
 		public async Task<IActionResult> CreateQuote()
         {

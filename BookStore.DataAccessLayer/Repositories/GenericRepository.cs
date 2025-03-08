@@ -10,7 +10,7 @@ namespace BookStore.DataAccessLayer.Repositories
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        public readonly BookStoreContext _context;  
+        protected readonly BookStoreContext _context;  
 
         public GenericRepository(BookStoreContext context)
         {

@@ -18,8 +18,8 @@ namespace BookStore.DataAccessLayer.EntityFramework
 
         public GeneralInfo GetLastOne()
         {
-            BookStoreContext context = new BookStoreContext();
-            return context.GeneralInfos.OrderByDescending(x => x.GeneralInfoId).FirstOrDefault();
+            var values = _context.GeneralInfos.OrderByDescending(x => x.GeneralInfoId).FirstOrDefault();
+            return values;
         }
     }
 }

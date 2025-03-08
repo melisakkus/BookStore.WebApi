@@ -21,8 +21,8 @@ builder.Services.AddScoped<IProductService,ProductManager>();
 builder.Services.AddScoped<IQuoteDal,EfQuoteDal>();
 builder.Services.AddScoped<IQuoteService,QuoteManager>();
 
-builder.Services.AddScoped<IGeneralInfoDal, EfGeneralInfoDal>();
-builder.Services.AddScoped<IGeneralInfoService, GeneralInfoManager>();
+builder.Services.AddTransient<IGeneralInfoDal,EfGeneralInfoDal>();
+builder.Services.AddTransient<IGeneralInfoService,GeneralInfoManager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

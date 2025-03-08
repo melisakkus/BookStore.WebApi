@@ -16,8 +16,4 @@
     <ProjectReference Include="..\BookStore.WebApi\BookStore.WebApi.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\NewFolder\" />
-  </ItemGroup>
-
 </Project>

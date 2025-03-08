@@ -16,10 +16,10 @@ namespace BookStore.DataAccessLayer.EntityFramework
         {
         }
 
-        BookStoreContext context = new BookStoreContext();
+        //BookStoreContext context = new BookStoreContext();
         public Quote TakeLastQuote()
         {
-            var quote = context.Quotes.OrderByDescending(x => x.QuoteId).FirstOrDefault();
+            var quote = _context.Quotes.OrderByDescending(x => x.QuoteId).FirstOrDefault();
             return quote;
         }
     }

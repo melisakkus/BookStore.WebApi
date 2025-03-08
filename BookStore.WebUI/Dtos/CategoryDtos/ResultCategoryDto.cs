@@ -1,4 +1,5 @@
 ﻿using BookStore.EntityLayer.Concrete;
+using BookStore.WebUI.Dtos.ProductDtos;
 
 namespace BookStore.WebUI.Dtos.CategoryDtos
 {
@@ -7,7 +8,7 @@ namespace BookStore.WebUI.Dtos.CategoryDtos
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
 
-        public virtual List<Product>? Products { get; set; }
+        public List<ResultProductDto>? Products { get; set; }
 
     }
 }

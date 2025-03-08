@@ -1,0 +1,32 @@
+﻿@model GeneralInfo
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <br /> <br />
+        <input type="hidden" asp-for="GeneralInfoId"/>
+        <label>Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+        <br />
+        <label>Adres</label>
+        <input type="text" asp-for="Adress" class="form-control" />
+        <br />
+        <label>Tel No</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+        <br />
+        <label>Hakkımızda</label>
+        <input type="text" asp-for="AboutUsContent" class="form-control" />
+        <br />
+        <label>Sosyal Medya Linki</label>
+        <input type="text" asp-for="SocialMedia" class="form-control" />
+        <br />
+        <label>Sipariş Takip Linki</label>
+        <input type="text" asp-for="FollowOrder" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Genel Bilgi Ekle</button>
+    </div>
+</form>

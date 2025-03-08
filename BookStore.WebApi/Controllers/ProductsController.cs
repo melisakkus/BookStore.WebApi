@@ -1,5 +1,7 @@
-﻿using BookStore.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BookStore.BusinessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
+using BookStore.WebApi.Dtos.ProductDtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,20 +12,26 @@ namespace BookStore.WebApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
-        public ProductsController(IProductService productService)
+        private readonly IMapper _mapper;
+
+        public ProductsController(IProductService productService,IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult ProductList()
         {
-            return Ok(_productService.TGetAll());
+            var products = _productService.TGetAll();
+            var dtos = _mapper.Map<List<ResultProductDto>>(products);
+            return Ok(dtos);
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
+            var product = _mapper.Map<Product>(createProductDto);
             _productService.TAdd(product);
             return Ok("Ekleme işlemi başarılı");
         }
@@ -36,8 +44,9 @@ namespace BookStore.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateProduct(Product product)
+        public IActionResult UpdateProduct(UpdateProductDto updateProductDto)
         {
+            var product = _mapper.Map<Product>(updateProductDto);
             _productService.TUpdate(product);
             return Ok("Güncelleme işlemi başarılı");
         }
@@ -45,7 +54,9 @@ namespace BookStore.WebApi.Controllers
         [HttpGet("GetProduct")]
         public IActionResult GetProduct(int id)
         {
-            return Ok(_productService.TGetById(id));
+            var product = _productService.TGetById(id);
+            var dto = _mapper.Map<GetByIdProductDto>(product);
+            return Ok(dto);
         }
 
         [HttpGet("ProductCount")]
@@ -56,14 +67,18 @@ namespace BookStore.WebApi.Controllers
 
         [HttpGet("LastFourBooks")]
 		public IActionResult LastFourBooks()
-		{
-			return Ok(_productService.TGetLastFourBooks());
+		{   
+            var products = _productService.TGetLastFourBooks();
+            var dtos = _mapper.Map<List<ResultProductDto>>(products);
+            return Ok(dtos);
 		}
 
         [HttpGet("BestSellingBook")]
 		public IActionResult BestSellingBook()
         {
-            return Ok(_productService.TGetBestSellingBook());
+            var product = _productService.TGetBestSellingBook();
+            var dto = _mapper.Map<ResultProductDto>(product);
+            return Ok(dto);
 		}
 	}
 }

@@ -19,7 +19,6 @@ namespace BookStore.EntityLayer.Concrete
 
         public int? CategoryId { get; set; }
         
-        [JsonIgnore]
         public virtual Category? Category { get; set; }
 	}
 }

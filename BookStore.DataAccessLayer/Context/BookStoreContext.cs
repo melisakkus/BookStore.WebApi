@@ -19,7 +19,7 @@ namespace BookStore.DataAccessLayer.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Quote> Quotes { get; set; }
-
         public DbSet<GeneralInfo> GeneralInfos { get; set; }
+        public DbSet<UserEmail> UserEmails { get; set; }
     }
 }

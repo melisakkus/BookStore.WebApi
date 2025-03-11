@@ -4,6 +4,7 @@ using BookStore.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20250310235036_mig-emailentity")]
+    partial class migemailentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,23 +141,6 @@ namespace BookStore.DataAccessLayer.Migrations
                     b.HasKey("QuoteId");
 
                     b.ToTable("Quotes");
-                });
-
-            modelBuilder.Entity("BookStore.EntityLayer.Concrete.UserEmail", b =>
-                {
-                    b.Property<int>("UserEmailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserEmailId"));
-
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserEmailId");
-
-                    b.ToTable("UserEmails");
                 });
 
             modelBuilder.Entity("BookStore.EntityLayer.Concrete.Product", b =>

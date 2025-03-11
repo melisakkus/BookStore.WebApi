@@ -1,0 +1,16 @@
+﻿@model UserEmail
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <br /> <br />
+        <input type="hidden" asp-for="UserEmailId" class="form-control" />
+        <label>Email Adresi</label>
+        <input type="text" asp-for="EmailAddress" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Email Güncelle</button>
+    </div>
+</form>

@@ -1,43 +1,71 @@
-﻿
-@*
+﻿@*
     _DefaultSubscribeComponent
 *@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 <section id="subscribe">
-	<div class="container">
-		<div class="row justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
 
-			<div class="col-md-8">
-				<div class="row">
+            <div class="col-md-8">
+                <div class="row">
 
-					<div class="col-md-6">
+                    <div class="col-md-6">
+                        <div class="title-element">
+                            <h2 class="section-title divider">Bültenimize abone olun ✉︎ </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
 
-						<div class="title-element">
-							<h2 class="section-title divider">Subscribe to our newsletter</h2>
-						</div>
+                        <div class="subscribe-content" data-aos="fade-up">
+                            <p>
+                                Bültenimize abone olarak en yeni kitaplar, yazar röportajları ve özel indirimler hakkında bilgi alabilirsiniz.
+                            </p>
+                            <input type="text" id="emailaddress" placeholder="Email adresinizi giriniz..." />
+                            <button type="button" class="btn-subscribe" id="sendbutton">
+                                <span>Gönder</span>
+                                <i class="icon icon-send"></i>
+                            </button>
+                        </div>
 
-					</div>
-					<div class="col-md-6">
+                    </div>
 
-						<div class="subscribe-content" data-aos="fade-up">
-							<p>
-								Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit
-								adipiscing enim pharetra hac.
-							</p>
-							<form id="form">
-								<input type="text" name="email" placeholder="Enter your email addresss here">
-								<button class="btn-subscribe">
-									<span>send</span>
-									<i class="icon icon-send"></i>
-								</button>
-							</form>
-						</div>
+                </div>
+            </div>
 
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
+        </div>
+    </div>
 </section>
+
+<script>
+    $("#sendbutton").click(function (event) {
+        event.preventDefault();
+        let emailAddress = $("#emailaddress").val();
+
+        if (!emailAddress) {
+            swal("Uyarı", "Lütfen email adresinizi giriniz.", "warning");
+            return;
+        }
+
+        $.ajax({
+            url: "/Subscribe/AddNewEmail/",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ EmailAddress: emailAddress }),
+            success: function (data) {
+                swal({
+                    title: "Başarılı",
+                    text: "'" + data.emailAddress + "' başarılı bir şekilde kaydedilmiştir.",
+                    icon: "success"
+                });
+                $("#emailaddress").val('');
+            },
+            error: function () {
+                swal("Hata", "Bir şeyler yanlış gitti.", "error");
+            }
+        });
+    });
+
+</script>

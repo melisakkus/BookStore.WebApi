@@ -1,0 +1,31 @@
+﻿@model List<UserEmail>
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+@{
+    int count = 0;
+}
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Email Adresi</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.EmailAddress</td>
+                <td><a href="/UserEmail/DeleteEmail/@item.UserEmailId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/UserEmail/UpdateEmail/@item.UserEmailId" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/UserEmail/CreateEmail/" class="btn btn-primary">Yeni Mail Kaydet</a>
+</div>
+

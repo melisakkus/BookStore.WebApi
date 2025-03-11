@@ -21,8 +21,11 @@ builder.Services.AddScoped<IProductService,ProductManager>();
 builder.Services.AddScoped<IQuoteDal,EfQuoteDal>();
 builder.Services.AddScoped<IQuoteService,QuoteManager>();
 
-builder.Services.AddTransient<IGeneralInfoDal,EfGeneralInfoDal>();
-builder.Services.AddTransient<IGeneralInfoService,GeneralInfoManager>();
+builder.Services.AddScoped<IGeneralInfoDal,EfGeneralInfoDal>();
+builder.Services.AddScoped<IGeneralInfoService,GeneralInfoManager>();
+
+builder.Services.AddScoped<IUserEmailDal,EfUserEmailDal>();
+builder.Services.AddScoped<IUserEmailService, UserEmailManager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

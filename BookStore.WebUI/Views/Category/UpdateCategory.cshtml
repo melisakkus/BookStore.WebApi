@@ -1,8 +1,7 @@
-﻿@using BookStore.WebUI.Dtos.CategoryDtos
-@model CreateCategoryDto
+﻿@model UpdateCategoryDto
 @{
     ViewData["Title"] = "Kategoriler";
-    ViewData["Title2"] = "Kategori Ekle";
+    ViewData["Title2"] = "Kategori Güncelle";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
@@ -13,12 +12,13 @@
             <tr>
                 <th class="text-end align-middle" style="width: 30%;">Kategori Adı</th>
                 <td>
-                    <input type="text" asp-for="CategoryName" class="form-control" placeholder="Kategori adı girin" required />
+                    <input type="hidden" asp-for="CategoryId" />
+                    <input type="text" asp-for="CategoryName" class="form-control" placeholder="Yeni kategori adını girin" required />
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class="text-center">
-                    <button type="submit" class="btn btn-primary">Ekle</button>
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
                     <a href="/Category/CategoryList" class="btn btn-secondary">Gerİ Dön</a>
                 </td>
             </tr>

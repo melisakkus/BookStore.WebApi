@@ -1,14 +1,13 @@
-﻿@using BookStore.WebUI.Dtos.GenerallInfoDtos
-@model List<ResultGeneralInfoDto>
+﻿@model List<ResultGeneralInfoDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "Genel Bilgiler";
+    ViewData["Title2"] = "Genel Bilgiler Listesi";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-<div class="container">
+<div class="container text-center">
     <br /><br />
-    <table class="table table-bordered">
+    <table class="table table-striped table-hover">
         <tr>
             <th>#</th>
             <th>Email</th>
@@ -24,10 +23,10 @@
                 <td>@item.Email</td>
                 <td>@item.Adress</td>
                 <td>@item.PhoneNumber</td>
-                <td><a href="/GeneralInfo/DeleteGeneralInfo/@item.GeneralInfoId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/GeneralInfo/DeleteGeneralInfo/@item.GeneralInfoId" class="btn btn-danger">Sİl</a></td>
                 <td><a href="/GeneralInfo/UpdateGeneralInfo/@item.GeneralInfoId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
     </table>
-    <a href="/GeneralInfo/CreateGeneralInfo" class="btn btn-primary">Yeni Alıntı Girişi</a>
+    <a href="/GeneralInfo/CreateGeneralInfo" class="btn btn-primary">Yenİ Bİlgİ GİrİŞİ</a>
 </div>

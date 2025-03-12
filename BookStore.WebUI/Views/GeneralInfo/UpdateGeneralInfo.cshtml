@@ -1,33 +1,32 @@
-﻿@using BookStore.WebUI.Dtos.GenerallInfoDtos
-@model UpdateGeneralInfoDto
+﻿@model UpdateGeneralInfoDto
 @{
-    Layout = null;
+    ViewData["Title"] = "Genel Bilgiler";
+    ViewData["Title2"] = "Genel Bilgi Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-<form method="post">
-    <div class="container">
-        <br /> <br />
+<div class="container text-center">
+    <br /><br />
+    <form method="post">
         <input type="hidden" asp-for="GeneralInfoId" />
-        <label>Email</label>
+        <label><strong>Email</strong></label>
         <input type="text" asp-for="Email" class="form-control" />
         <br />
-        <label>Adres</label>
+        <label><strong>Adres</strong></label>
         <input type="text" asp-for="Adress" class="form-control" />
         <br />
-        <label>Tel No</label>
+        <label><strong>Tel No</strong></label>
         <input type="text" asp-for="PhoneNumber" class="form-control" />
         <br />
-        <label>Hakkımızda</label>
+        <label><strong>Hakkımızda</strong></label>
         <input type="text" asp-for="AboutUsContent" class="form-control" />
         <br />
-        <label>Sosyal Medya Linki</label>
+        <label><strong>Sosyal Medya Linki</strong></label>
         <input type="text" asp-for="SocialMedia" class="form-control" />
         <br />
-        <label>Sipariş Takip Linki</label>
+        <label><strong>Sipariş Takip Linki</strong></label>
         <input type="text" asp-for="FollowOrder" class="form-control" />
         <br />
-        <button class="btn btn-primary">Bilgi Güncelle</button>
-    </div>
-</form>
+        <button class="btn btn-primary">Genel Bİlgİ Güncelle</button>
+    </form>
+</div>

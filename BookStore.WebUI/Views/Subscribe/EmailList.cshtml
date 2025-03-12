@@ -1,0 +1,34 @@
+﻿@model List<ResultUserEmailDto>
+@{
+    ViewData["Title"] = "Abonelik";
+    ViewData["Title2"] = "Email Talepleri";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+@{
+    int count = 0;
+}
+<div class="container text-center">
+    <br /><br />
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>#</th>
+            <th>Email Adresi</th>
+            <th>İşlem</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.EmailAddress</td>
+                <td>
+                    <a href="/Subscribe/DeleteSubscribe/@item.UserEmailId" class="btn btn-danger">Sİl</a>
+                    <a href="/Subscribe/UpdateSubscribe/@item.UserEmailId" class="btn btn-success">Güncelle</a>
+                    <a href="/Subscribe/SendEmail/" class="btn btn-warning">Maİl Gönder</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Subscribe/CreateSubscribe/" class="btn btn-primary">Yenİ Maİl Ekle</a>
+</div>
+

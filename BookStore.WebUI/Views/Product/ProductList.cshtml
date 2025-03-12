@@ -1,14 +1,13 @@
-﻿@using BookStore.WebUI.Dtos.ProductDtos
-@model List<ResultProductDto>
+﻿@model List<ResultProductDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "Kitaplar";
+    ViewData["Title2"] = "Kitap Listesi";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-<div class="container">
+<div class="container text-center">
     <br /><br />
-    <table class="table table-bordered">
+    <table class="table table-striped table-hover">
         <tr>
             <th>#</th>
             <th>Ürün Adı</th>
@@ -24,10 +23,10 @@
                 <td>@item.ProductName</td>
                 <td>@item.ProductStock</td>
                 <td>@item.ProductPrice</td>
-                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sİl</a></td>
                 <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
     </table>
-    <a href="/Product/CreateProduct/" class="btn btn-primary">Yeni Ürün Girişi</a>
+    <a href="/Product/CreateProduct/" class="btn btn-primary">Yenİ Kİtap Gİrİşİ</a>
 </div>

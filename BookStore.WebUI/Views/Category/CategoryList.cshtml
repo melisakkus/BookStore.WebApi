@@ -1,29 +1,35 @@
 ﻿@using BookStore.WebUI.Dtos.CategoryDtos
 @model List<ResultCategoryDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "Kategoriler";
+    ViewData["Title2"] = "Kategori Listesi";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<div class="container">
+@{
+    int count = 0;
+}
+<div class="container text-center">
     <br/ ><br />
-    <table class="table table-bordered">
+    <table class="table table-striped table-hover">
         <tr>
            <th>#</th>
            <th>Kategori Adı</th>
-           <th>Sil</th>
-           <th>Güncelle</th>
+           <th>İşlemler</th>
         </tr>
         @foreach(var item in Model)
         {
+            count++;
             <tr>
-                <td>@item.CategoryId</td>
+                <td>@count</td>
                 <td>@item.CategoryName</td>
-                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
+                <td>
+                    <a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sİl</a> 
+                    <a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">GÜncelle</a>
+                </td>
             </tr>
         }
     </table>
-    <a href="/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori Girişi</a>
+    <a href="/Category/CreateCategory/" class="btn btn-primary">Yenİ Kategorİ Gİrİşİ</a>
 </div>
 

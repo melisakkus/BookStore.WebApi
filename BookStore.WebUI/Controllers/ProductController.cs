@@ -42,6 +42,7 @@ namespace BookStore.WebUI.Controllers
             }
             return View();
         }
+
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -61,7 +62,7 @@ namespace BookStore.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByIdProductDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
                 return View(values);
             }
             return View();

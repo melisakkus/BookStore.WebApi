@@ -1,0 +1,19 @@
+﻿@model UpdateUserEmailDto
+@{
+    ViewData["Title"] = "Abonelik";
+    ViewData["Title2"] = "Mail Bilgisi Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<div class="container text-center">
+    <br /><br />
+    <form method="post">
+        <input type="hidden" asp-for="UserEmailId" />
+        <label>Email Adresi</label>
+        <input type="text" asp-for="EmailAddress" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </form>
+</div>
+

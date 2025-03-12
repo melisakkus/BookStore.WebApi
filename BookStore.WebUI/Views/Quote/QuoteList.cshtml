@@ -1,19 +1,19 @@
 ﻿@model List<ResultQuoteDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "Alıntılar";
+    ViewData["Title2"] = "Alıntı Listesi";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<div class="container">
+<div class="container text-center">
     <br /><br />
-    <table class="table table-bordered">
+    <table class="table table-striped table-hover">
         <tr>
             <th>#</th>
             <th>Alıntı</th>
             <th>Yazarı</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
+            <th>İşlemler</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -21,10 +21,12 @@
                 <td>@item.QuoteId</td>
                 <td>@item.Sentence</td>
                 <td>@item.Author</td>
-                <td><a href="/Quote/DeleteQuote/@item.QuoteId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Quote/UpdateQuote/@item.QuoteId" class="btn btn-success">Güncelle</a></td>
+                <td>
+                    <a href="/Quote/UpdateQuote/@item.QuoteId" class="btn btn-success">Güncelle</a>
+                    <a href="/Quote/DeleteQuote/@item.QuoteId" class="btn btn-danger">Sİl</a>
+                </td>
             </tr>
         }
     </table>
-    <a href="/Quote/CreateQuote/" class="btn btn-primary">Yeni Alıntı Girişi</a>
+    <a href="/Quote/CreateQuote/" class="btn btn-primary">Yenİ Alıntı GİRİŞİ </a>
 </div>

@@ -4,37 +4,6 @@
 }
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
-<li>
-    <div class="dropdown">
-        <button type="button"
-                class="btn btn-primary dropdown-toggle"
-                data-bs-toggle="dropdown">
-            Localization
-        </button>
-        <ul class="dropdown-menu">
-            <li>
-                <a asp-controller="Dashboard"
-                   asp-action="ChangeLanguage"
-                   asp-route-culture="en-US"
-                   class="dropdown-item">
-                    <i class="flag-icon flag-icon-gb"></i> English
-                </a>
-            </li>
-            <li>
-                <a asp-controller="Dashboard"
-                   asp-action="ChangeLanguage"
-                   asp-route-culture="tr-TR"
-                   class="dropdown-item">
-                    <i class="flag-icon flag-icon-tr"></i> Türkçe
-                </a>
-            </li>
-        </ul>
-    </div>
-</li>
-<h1>@_localization.Getkey("Welcome").Value</h1>
-
-
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -224,60 +193,60 @@
     </div>
 
     ---
-@*     <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['corechart', 'bar', 'pie'] });
-        google.charts.setOnLoadCallback(drawBarChart);
-        google.charts.setOnLoadCallback(drawPieChart);
+    @*     <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart', 'bar', 'pie'] });
+    google.charts.setOnLoadCallback(drawBarChart);
+    google.charts.setOnLoadCallback(drawPieChart);
 
-        // Bar Chart Fonksiyonu
-        function drawBarChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Kategori', 'Değer'],
-        @foreach (var item in ViewBag.ChartData)
-        {
-            @:['@item.Key', @item.Value],
-        }
-                ]);
+    // Bar Chart Fonksiyonu
+    function drawBarChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Kategori', 'Değer'],
+    @foreach (var item in ViewBag.ChartData)
+    {
+    @:['@item.Key', @item.Value],
+    }
+    ]);
 
-            var options = {
-                title: 'Dinamik Grafik',
-                chartArea: { width: '50%' },
-                hAxis: {
-                    title: 'Değerler',
-                    minValue: 0
-                },
-                vAxis: {
-                    title: 'Kategori'
-                }
-            };
+    var options = {
+    title: 'Dinamik Grafik',
+    chartArea: { width: '50%' },
+    hAxis: {
+    title: 'Değerler',
+    minValue: 0
+    },
+    vAxis: {
+    title: 'Kategori'
+    }
+    };
 
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+    }
 
-        // Pie Chart Fonksiyonu
-        function drawPieChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Kategori', 'Değer'],
-        @foreach (var item in ViewBag.ChartData2)
-        {
-            @:['@item.Key', @item.Value],
-        }
-                ]);
+    // Pie Chart Fonksiyonu
+    function drawPieChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Kategori', 'Değer'],
+    @foreach (var item in ViewBag.ChartData2)
+    {
+    @:['@item.Key', @item.Value],
+    }
+    ]);
 
-            var options = {
-                title: 'Dinamik Pasta Grafik',
-                is3D: true,
-                slices: {
-                    0: { offset: 0.1 },
-                    1: { offset: 0.1 },
-                    2: { offset: 0.1 },
-                }
-            };
+    var options = {
+    title: 'Dinamik Pasta Grafik',
+    is3D: true,
+    slices: {
+    0: { offset: 0.1 },
+    1: { offset: 0.1 },
+    2: { offset: 0.1 },
+    }
+    };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-            chart.draw(data, options);
-        }
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+    }
     </script>
 
     <div id="chart_div" style="width: 900px; height: 500px;"></div>

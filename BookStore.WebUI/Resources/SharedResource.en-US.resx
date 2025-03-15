@@ -120,10 +120,22 @@
   <data name="Merhaba" xml:space="preserve">
     <value>Hello</value>
   </data>
-  <data name="Dünya" xml:space="preserve">
-    <value>World</value>
+  <data name="İstatistikler" xml:space="preserve">
+    <value>Statistics</value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="Kitaplar" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="Kategoriler" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Alıntılar" xml:space="preserve">
+    <value>Quotes</value>
+  </data>
+  <data name="Abonelikler" xml:space="preserve">
+    <value>Subscriptions</value>
+  </data>
+  <data name="Genel Bilgiler" xml:space="preserve">
+    <value>General Information</value>
   </data>
 </root>

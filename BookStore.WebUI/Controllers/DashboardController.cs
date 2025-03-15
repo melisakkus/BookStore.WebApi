@@ -10,40 +10,25 @@ namespace BookStore.WebUI.Controllers
 {
     public class DashboardController : Controller
     {
-        private LanguageService _localication;
+        private LanguageService _localization;
         private readonly IHttpClientFactory _clientFactory;
-        public DashboardController(LanguageService localication, IHttpClientFactory clientFactory)
+        public DashboardController(LanguageService localization, IHttpClientFactory clientFactory)
         {
-            _localication = localication;
+            _localization = localization;
             _clientFactory = clientFactory;
         }
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Welcome = _localication.Getkey("Welcome").Value;
+            ViewBag.Abonelikler = _localization.Getkey("Abonelikler").Value;
+            ViewBag.Alıntılar = _localization.Getkey("Alıntılar").Value;
+            ViewBag.GenelBilgiler = _localization.Getkey("Genel Bilgiler").Value;
+            ViewBag.İstatistikler = _localization.Getkey("İstatistikler").Value;
+            ViewBag.Kategoriler = _localization.Getkey("Kategoriler").Value;
+            ViewBag.Kitaplar = _localization.Getkey("Kitaplar").Value;
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
-            //        var chartData = new List<KeyValuePair<string, int>>()
-            //{
-            //    new KeyValuePair<string, int>("A", 10),
-            //    new KeyValuePair<string, int>("B", 20),
-            //    new KeyValuePair<string, int>("C", 30),
-            //    new KeyValuePair<string, int>("D", 40)
-            //};
-            //        ViewBag.ChartData = chartData;
-
-            //        var chartData2 = new List<KeyValuePair<string, int>>()
-            //{
-            //    new KeyValuePair<string, int>("A", 10),
-            //    new KeyValuePair<string, int>("B", 20),
-            //    new KeyValuePair<string, int>("C", 30),
-            //    new KeyValuePair<string, int>("D", 40)
-            //};
-
-            //        ViewBag.ChartData2 = chartData2;
-
-
-
+            #region Statics
 
             var client = _clientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7158/api/Dashboards/GetAuthors");
@@ -152,7 +137,7 @@ namespace BookStore.WebUI.Controllers
                 var product = JsonConvert.DeserializeObject<Product>(value);
                 ViewBag.leastStockProduct = product;
             }
-
+            #endregion
             return View();
 
         }
@@ -164,5 +149,7 @@ namespace BookStore.WebUI.Controllers
             });
             return Redirect(Request.Headers["Referer"].ToString());
         }
+
     }
 }
+

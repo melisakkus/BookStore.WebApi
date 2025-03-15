@@ -27,6 +27,9 @@ builder.Services.AddScoped<IGeneralInfoService,GeneralInfoManager>();
 builder.Services.AddScoped<IUserEmailDal,EfUserEmailDal>();
 builder.Services.AddScoped<IUserEmailService, UserEmailManager>();
 
+builder.Services.AddScoped<IDashboardDal, EfDashboardDal>();
+builder.Services.AddScoped<IDashboardService, DashboardManager>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddControllers().AddJsonOptions(options =>

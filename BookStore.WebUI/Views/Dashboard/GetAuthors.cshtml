@@ -1,0 +1,10 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "GetAuthors";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+@foreach(var item in Model)
+{
+    @item.AuthorName
+}

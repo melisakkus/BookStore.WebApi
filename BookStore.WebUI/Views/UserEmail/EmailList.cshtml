@@ -3,17 +3,50 @@
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.0/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.0/dist/sweetalert2.min.js"></script>
+
+
 @{
     int count = 0;
 }
-<div class="container">
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarıyla Gönderildi!',
+            text: '@Html.Raw(TempData["SuccessMessage"])',
+            showConfirmButton: true,   // Buton gösteriliyor
+            confirmButtonText: 'Tamam',  // Butonun metni
+            timer: null  // Otomatik kapanma özelliği devre dışı bırakılıyor
+        });
+    </script>
+}
+
+@if (TempData["FailMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: '@Html.Raw(TempData["FailMessage"])',
+            showConfirmButton: true,   // Buton gösteriliyor
+            confirmButtonText: 'Tamam',  // Butonun metni
+            timer: null  // Otomatik kapanma özelliği devre dışı bırakılıyor
+        });
+    </script>
+}
+
+
+<div class="container text-center">
     <br /><br />
     <table class="table table-bordered">
         <tr>
             <th>#</th>
             <th>Email Adresi</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
+            <th>İşlemler</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -21,11 +54,19 @@
             <tr>
                 <td>@count</td>
                 <td>@item.EmailAddress</td>
-                <td><a href="/UserEmail/DeleteEmail/@item.UserEmailId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/UserEmail/UpdateEmail/@item.UserEmailId" class="btn btn-success">Güncelle</a></td>
+                <td>
+                    <a href="/UserEmail/DeleteEmail/@item.UserEmailId" class="btn btn-danger">Sil</a>
+                    <a href="/UserEmail/UpdateEmail/@item.UserEmailId" class="btn btn-success">Güncelle</a>
+                </td>
+                <td>
+                    <form method="post" action="/UserEmail/SendMail/@item.UserEmailId">
+                        <button type="submit" class="btn btn-primary">Mail Gönder</button>
+                    </form>
+
+                </td>
             </tr>
         }
     </table>
-    <a href="/UserEmail/CreateEmail/" class="btn btn-primary">Yeni Mail Kaydet</a>
-</div>
+    <a href="/UserEmail/CreateEmail/" class="btn btn-primary">Yeni Maİl Kaydet</a>
 
+</div>

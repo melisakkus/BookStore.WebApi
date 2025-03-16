@@ -1,8 +1,12 @@
-﻿using BookStore.EntityLayer.Concrete;
+﻿using Azure;
+using BookStore.DataAccessLayer.Context;
+using BookStore.EntityLayer.Concrete;
 using BookStore.WebUI.Services;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -20,6 +24,7 @@ namespace BookStore.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
+            #region EnglishLanguage
             ViewBag.Abonelikler = _localization.Getkey("Abonelikler").Value;
             ViewBag.Alıntılar = _localization.Getkey("Alıntılar").Value;
             ViewBag.GenelBilgiler = _localization.Getkey("Genel Bilgiler").Value;
@@ -27,9 +32,9 @@ namespace BookStore.WebUI.Controllers
             ViewBag.Kategoriler = _localization.Getkey("Kategoriler").Value;
             ViewBag.Kitaplar = _localization.Getkey("Kitaplar").Value;
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+            #endregion
 
             #region Statics
-
             var client = _clientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7158/api/Dashboards/GetAuthors");
             if (responseMessage.IsSuccessStatusCode)
@@ -138,9 +143,10 @@ namespace BookStore.WebUI.Controllers
                 ViewBag.leastStockProduct = product;
             }
             #endregion
-            return View();
 
+            return View();
         }
+
         public IActionResult ChangeLanguage(string culture)
         {
             Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)), new CookieOptions()
@@ -149,7 +155,6 @@ namespace BookStore.WebUI.Controllers
             });
             return Redirect(Request.Headers["Referer"].ToString());
         }
-
     }
 }
 

@@ -1,8 +1,8 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "İstatistikler";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <div class="container-fluid py-4">
     <div class="row">
@@ -191,71 +191,6 @@
             </div>
         </div>
     </div>
-
-    ---
-    @*     <script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart', 'bar', 'pie'] });
-    google.charts.setOnLoadCallback(drawBarChart);
-    google.charts.setOnLoadCallback(drawPieChart);
-
-    // Bar Chart Fonksiyonu
-    function drawBarChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Kategori', 'Değer'],
-    @foreach (var item in ViewBag.ChartData)
-    {
-    @:['@item.Key', @item.Value],
-    }
-    ]);
-
-    var options = {
-    title: 'Dinamik Grafik',
-    chartArea: { width: '50%' },
-    hAxis: {
-    title: 'Değerler',
-    minValue: 0
-    },
-    vAxis: {
-    title: 'Kategori'
-    }
-    };
-
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-    }
-
-    // Pie Chart Fonksiyonu
-    function drawPieChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Kategori', 'Değer'],
-    @foreach (var item in ViewBag.ChartData2)
-    {
-    @:['@item.Key', @item.Value],
-    }
-    ]);
-
-    var options = {
-    title: 'Dinamik Pasta Grafik',
-    is3D: true,
-    slices: {
-    0: { offset: 0.1 },
-    1: { offset: 0.1 },
-    2: { offset: 0.1 },
-    }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-    chart.draw(data, options);
-    }
-    </script>
-
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-
-    <div id="piechart_3d" style="width: 900px; height: 500px;"></div> *@
-
-
-
-    ----
 
     <div class="row mt-4">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">

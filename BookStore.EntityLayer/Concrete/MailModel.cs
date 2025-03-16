@@ -11,10 +11,10 @@ namespace BookStore.EntityLayer.Concrete
     public class MailModel
     {
         public string ToEmail { get; set; }  
-        public string Subject = "🎉 Aboneliğiniz Başladı! En Yeni Kitaplardan İlk Siz Haberdar Olun!"; 
+        public string Subject = "🎉 BookSaw Aboneliğiniz Başladı! En Yeni Kitaplardan İlk Siz Haberdar Olun!"; 
         public string Body = @"
         <p>Merhaba,</p>
-        <p>Bültenimize abone olduğunuz için teşekkür ederiz! 🎉 Artık yeni çıkan kitaplardan, özel indirimlerden ve önerilerimizden ilk siz haberdar olacaksınız.</p>
+        <p>BookSaw bültenimize abone olduğunuz için teşekkür ederiz! 🎉 Artık yeni çıkan kitaplardan, özel indirimlerden ve önerilerimizden ilk siz haberdar olacaksınız.</p>
         <p>📌 <strong>Sizi Neler Bekliyor?</strong></p>
         <ul>
             <li> Yeni çıkan kitaplar hakkında ilk siz bilgi alacaksınız.</li>

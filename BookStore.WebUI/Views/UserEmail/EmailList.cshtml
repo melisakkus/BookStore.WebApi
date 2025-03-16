@@ -1,5 +1,6 @@
 ﻿@model List<UserEmail>
 @{
+    ViewData["Title"] = "Abonelikler ve Mailler";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -47,6 +48,7 @@
             <th>#</th>
             <th>Email Adresi</th>
             <th>İşlemler</th>
+            <th>Abonelik</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -55,13 +57,14 @@
                 <td>@count</td>
                 <td>@item.EmailAddress</td>
                 <td>
-                    <a href="/UserEmail/DeleteEmail/@item.UserEmailId" class="btn btn-danger">Sil</a>
+                    <a href="/UserEmail/DeleteEmail/@item.UserEmailId" class="btn btn-danger">Sİl</a>
                     <a href="/UserEmail/UpdateEmail/@item.UserEmailId" class="btn btn-success">Güncelle</a>
-                </td>
-                <td>
+                    <td>
                     <form method="post" action="/UserEmail/SendMail/@item.UserEmailId">
-                        <button type="submit" class="btn btn-primary">Mail Gönder</button>
+                        <button type="submit" class="btn btn-primary">Maİl Gönder</button>
                     </form>
+                </td>
+
 
                 </td>
             </tr>

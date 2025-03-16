@@ -27,7 +27,7 @@ namespace BookStore.DataAccessLayer.EntityFramework
         public decimal GetAvarageProductPrice()
         {
             var value = _context.Products.Average(x => x.ProductPrice);
-            return value;
+            return decimal.Round(value, 2);
         }
 
         public int GetCategoryCount()

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -51,8 +52,12 @@ namespace BookStore.WebUI.Controllers
             if (responseMessage2.IsSuccessStatusCode)
             {
                 var avgPrice = await responseMessage2.Content.ReadAsStringAsync();
-                var price = Convert.ToDouble(avgPrice);
-                ViewBag.avgPrice = price.ToString("F2");
+                Console.WriteLine("Average Price from API: " + avgPrice);
+
+                var price = Convert.ToDecimal(avgPrice.Replace(',', '.'), CultureInfo.InvariantCulture);
+
+                ViewBag.avgPrice = price.ToString("C2", new CultureInfo("tr-TR"));
+
             }
 
             var responseMessage3 = await client.GetAsync("https://localhost:7158/api/Dashboards/GetCategoryCount");
